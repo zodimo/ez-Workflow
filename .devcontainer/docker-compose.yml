@@ -1,0 +1,19 @@
+services:
+  app:
+    build: ./docker/app
+    volumes:
+      - ../:/workspace:cached
+      - ~/.ssh:/home/docker/.ssh
+      - ~/.gitconfig:/home/docker/.gitconfig
+    tty: true
+    environment:
+      APP_ENV: local
+      PHP_EXTENSION_XDEBUG: 1
+      XDEBUG_MODE: "debug,develop"
+      XDEBUG_CONFIG: "client_port=9003 client_host=localhost"
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
