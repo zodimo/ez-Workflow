@@ -45,6 +45,33 @@
         "zetacomponents/base": "~1.8"
     },
     "require-dev": {
-        "zetacomponents/unit-test": "*"
+        "zetacomponents/unit-test": "*",
+        "friendsofphp/php-cs-fixer": "^3.61",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^1.11"
+    },
+    "scripts": {
+        "test": [
+          "Composer\\Config::disableProcessTimeout",
+          "php ./vendor/bin/phpunit"
+        ],
+        "debug-test": [
+          "Composer\\Config::disableProcessTimeout",
+          "php -dxdebug.start_with_request=yes ./vendor/bin/phpunit"
+        ],
+        
+        "php": [
+          "Composer\\Config::disableProcessTimeout",
+          "php"
+        ],
+        "debug-php": [
+          "Composer\\Config::disableProcessTimeout",
+          "php -dxdebug.start_with_request=yes "
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     }
 }
